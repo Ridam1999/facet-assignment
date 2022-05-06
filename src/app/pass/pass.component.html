@@ -1,0 +1,36 @@
+
+<div class="container">
+    <h2 class="text-center">Password Generator</h2>
+
+  <mat-form-field  appearance="fill">
+    <mat-label>Length:</mat-label>
+    <input matInput class="length-input" placeholder="Ex. 8" value="" (input)="onChangeLength($any($event).target.value)">
+  </mat-form-field>
+  <label class="checkbox">
+    <input checked (change)="onChangeUseLetters()" type="checkbox">
+    Include alphabets
+  </label>
+
+  <label class="checkbox">
+    <input checked (change)="onChangeUseNumbers()" type="checkbox">
+    Include numbers
+  </label>
+
+  <label class="checkbox">
+    <input checked (change)="onChangeUseSymbols()" type="checkbox">
+    Include symbols
+  </label>
+
+  <button [disabled]="!(length && (includeLetters || includeSymbols || includeNumbers))"
+    (click)="onButtonClick()"
+    class="btn btn-primary">
+    Generate!
+  </button>
+
+  <div class="password" *ngIf="password">
+    <label>Password is: </label>
+    <input class="password-input" [value]="password" />
+  </div>
+</div>
+
+
